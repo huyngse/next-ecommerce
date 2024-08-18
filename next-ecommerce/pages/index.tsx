@@ -14,7 +14,7 @@ export default function Home({ products, bannerData }
       </div>
       <div className="products-container">
         {products?.map((product: ProductType) => {
-          return product.name;
+          return <Product key={product._id} product={product} />;
         })}
       </div>
       <FooterBanner />

@@ -1,14 +1,15 @@
 import { SanityImageSource } from "@sanity/image-url/lib/types/types"
+import { SanityAsset } from "@sanity/image-url/lib/types/types";
 
-export type ProductType = {
+export type ProductType = SanityAsset & {
     image: SanityImageSource[],
     name: string,
-    slug: string,
+    slug: any,
     price: number,
     detail: string
 }
 
-export type BannerType = {
+export type BannerType = SanityAsset & {
     image: SanityImageSource,
     buttonText: string,
     product: string,
