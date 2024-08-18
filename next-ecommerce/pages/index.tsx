@@ -1,18 +1,35 @@
 import React from "react";
-export default function Home() {
+import { FooterBanner, Product, HeroBanner } from "@/components";
+import { client } from "@/lib/client";
+import { BannerType, ProductType } from "@/types";
+// import { InferGetServerSidePropsType } from "next";
+export default function Home({ products, bannerData }
+  : { products: ProductType[], bannerData: BannerType[] }) {
   return (
     <>
-      HeroBanner
+      <HeroBanner heroBanner={bannerData.length ? bannerData[0] : undefined} />
       <div className="products-heading">
         <h2>Best Selling Products</h2>
         <p>Speakers of many variations</p>
       </div>
       <div className="products-container">
-        {['Product 1', 'Product 2'].map((product: string) => {
-          return product;
+        {products?.map((product: ProductType) => {
+          return product.name;
         })}
       </div>
-      Footer
+      <FooterBanner />
     </>
   );
 }
+export const getServerSideProps = async () => {
+  const query = `*[_type == "product"]`;
+  const products = await client.fetch(query);
+  const bannerQuery = `*[_type == "banner"]`;
+  const bannerData = await client.fetch(bannerQuery);
+  return {
+    props: {
+      products,
+      bannerData
+    }
+  }
+};
