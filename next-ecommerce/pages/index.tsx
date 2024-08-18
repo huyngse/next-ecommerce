@@ -17,7 +17,7 @@ export default function Home({ products, bannerData }
           return <Product key={product._id} product={product} />;
         })}
       </div>
-      <FooterBanner />
+      <FooterBanner footerBanner={bannerData.length ? bannerData[0] : undefined}/>
     </>
   );
 }
