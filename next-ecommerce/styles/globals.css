@@ -87,6 +87,7 @@ width: 100%;
 }
 .cart-item-qty{
   position: absolute;
+  top: -2px;
   right: -8px;
   font-size: 12px;
   color: #eee;

@@ -1,8 +1,22 @@
-import React from 'react'
-
-const Layout = () => {
+import React, { ReactNode } from 'react'
+import Head from 'next/head'
+import { Footer, Navbar } from '.'
+const Layout = ({ children }: { children: ReactNode }) => {
   return (
-    <div>Layout</div>
+    <div className='layout'>
+      <Head>
+        <title>JS Mastery Store</title>
+      </Head>
+      <header>
+        <Navbar />
+      </header>
+      <main className='main-container'>
+        {children}
+      </main>
+      <footer>
+        <Footer />
+      </footer>
+    </div>
   )
 }
 
