@@ -21,3 +21,8 @@ export type BannerType = SanityAsset & {
     discount: string,
     saleTime: string,
 }
+
+export type CartItemType = {
+    product: ProductType,
+    quantity: number
+}

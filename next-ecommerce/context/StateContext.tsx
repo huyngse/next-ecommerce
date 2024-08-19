@@ -1,11 +1,11 @@
-import { ProductType } from "@/types";
+import { CartItemType, ProductType } from "@/types";
 import { ReactNode, createContext, useContext, useState } from "react";
 import toast from "react-hot-toast";
 
 const Context = createContext<any>(null);
 export const StateContext = ({ children }: { children: ReactNode }) => {
     const [showCart, setShowCart] = useState(false);
-    const [cartItems, setCartItems] = useState<{ product: ProductType, quantity: number }[]>([]);
+    const [cartItems, setCartItems] = useState<CartItemType[]>([]);
     const [totalPrice, setTotalPrice] = useState(0);
     const [totalQuantity, setTotalQuantity] = useState(0);
     const [qty, setQty] = useState(1);
@@ -59,6 +59,7 @@ export const StateContext = ({ children }: { children: ReactNode }) => {
             incQty,
             decQty,
             onAdd,
+            setShowCart,
         }}>
             {children}
         </Context.Provider>
