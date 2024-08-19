@@ -7,7 +7,7 @@ import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineShopping } from 
 import { TiDeleteOutline } from "react-icons/ti";
 const Cart = () => {
   const cartRef = useRef<any>();
-  const { totalPrice, totalQuantity, cartItems, setShowCart, decQty, incQty, qty } = useStateContext();
+  const { totalPrice, totalQuantity, cartItems, setShowCart, toggleCartItemQuantity, onRemove } = useStateContext();
   return (
     <div className='cart-wrapper' ref={cartRef}>
       <div className='cart-container'>
@@ -51,13 +51,13 @@ const Cart = () => {
                 <div className='flex bottom'>
                   <div>
                     <p className='quantity-desc'>
-                      <span className='minus' >
+                      <span className='minus' onClick={() => toggleCartItemQuantity(item.product._id, "dec")}>
                         <AiOutlineMinus />
                       </span>
                       <span className='num'>
-                        0
+                        {item.quantity}
                       </span>
-                      <span className='plus' >
+                      <span className='plus' onClick={() => toggleCartItemQuantity(item.product._id, "inc")}>
                         <AiOutlinePlus />
                       </span>
                     </p>
@@ -65,7 +65,7 @@ const Cart = () => {
                   <button
                     type='button'
                     className='remove-item'
-                    onClick={() => { }}
+                    onClick={() => { onRemove(item) }}
                   >
                     <TiDeleteOutline />
                   </button>
@@ -92,7 +92,7 @@ const Cart = () => {
           </div>
         )}
       </div>
-    </div>
+    </div >
   )
 }
 
