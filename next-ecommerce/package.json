@@ -13,6 +13,7 @@
     "@sanity/image-url": "^1.0.2",
     "@stripe/react-stripe-js": "^2.8.0",
     "@stripe/stripe-js": "^4.3.0",
+    "canvas-confetti": "^1.9.3",
     "crypto-js": "^4.2.0",
     "next": "14.2.5",
     "next-ecommerce": "file:",
@@ -23,6 +24,7 @@
     "stripe": "^16.8.0"
   },
   "devDependencies": {
+    "@types/canvas-confetti": "^1.6.4",
     "@types/crypto-js": "^4.2.2",
     "@types/node": "^20",
     "@types/react": "^18",
