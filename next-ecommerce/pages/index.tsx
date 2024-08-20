@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FooterBanner, Product, HeroBanner } from "@/components";
 import { client } from "@/lib/client";
 import { BannerType, ProductType } from "@/types";
 // import { InferGetServerSidePropsType } from "next";
 export default function Home({ products, bannerData }
   : { products: ProductType[], bannerData: BannerType[] }) {
+
   return (
     <>
       <HeroBanner heroBanner={bannerData.length ? bannerData[0] : undefined} />
@@ -17,7 +18,7 @@ export default function Home({ products, bannerData }
           return <Product key={product._id} product={product} />;
         })}
       </div>
-      <FooterBanner footerBanner={bannerData.length ? bannerData[0] : undefined}/>
+      <FooterBanner footerBanner={bannerData.length ? bannerData[0] : undefined} />
     </>
   );
 }

@@ -11,14 +11,19 @@
   "dependencies": {
     "@sanity/client": "^6.21.3",
     "@sanity/image-url": "^1.0.2",
+    "@stripe/react-stripe-js": "^2.8.0",
+    "@stripe/stripe-js": "^4.3.0",
+    "crypto-js": "^4.2.0",
     "next": "14.2.5",
     "next-ecommerce": "file:",
     "react": "^18",
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
-    "react-icons": "^5.3.0"
+    "react-icons": "^5.3.0",
+    "stripe": "^16.8.0"
   },
   "devDependencies": {
+    "@types/crypto-js": "^4.2.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

@@ -5,9 +5,25 @@ import Link from 'next/link';
 import React, { useRef } from 'react'
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineShopping } from 'react-icons/ai'
 import { TiDeleteOutline } from "react-icons/ti";
+import getStripe from '@/lib/getStripe';
+import toast from 'react-hot-toast';
 const Cart = () => {
   const cartRef = useRef<any>();
   const { totalPrice, totalQuantity, cartItems, setShowCart, toggleCartItemQuantity, onRemove } = useStateContext();
+  const handleCheckout = async () => {
+    const stripe = await getStripe();
+    const response = await fetch('/api/stripe', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(cartItems),
+    });
+    if (response.status === 500 || stripe == null) return;
+    const data = await response.json();
+    toast.loading("Redirecting");
+    stripe.redirectToCheckout({ sessionId: data.id });
+  }
   return (
     <div className='cart-wrapper' ref={cartRef}>
       <div className='cart-container'>
@@ -84,7 +100,7 @@ const Cart = () => {
               <button
                 type='button'
                 className='btn'
-                onClick={() => { }}
+                onClick={handleCheckout}
               >
                 Pay with Stripe
               </button>
