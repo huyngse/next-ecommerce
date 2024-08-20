@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React, { useEffect } from 'react'
 import { BsBagCheckFill } from 'react-icons/bs';
 
-const success = () => {
+const Success = () => {
   const { setCartItems, setTotalQuantity, setTotalPrice } = useStateContext();
   useEffect(() => {
     setCartItems([]);
@@ -12,7 +12,7 @@ const success = () => {
     setTotalPrice(0);
     localStorage.clear();
     runFireWorks();
-  }, [])
+  }, [setCartItems, setTotalPrice, setTotalQuantity])
   
   return (
     <div className='success-wrapper'>
@@ -33,4 +33,4 @@ const success = () => {
   )
 }
 
-export default success
+export default Success
